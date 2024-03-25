@@ -1,0 +1,967 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #181818;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.icon {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 25px;
+}
+.icon_header {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 26px;
+}
+.icon, .icon_header {
+  margin-right: 5px;
+}
+
+.close_icon {
+  color: red;
+  margin-left: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Cambia las columnas para dar más espacio al área del encabezado */
+  grid-template-rows: 50px 1fr; /* Ajusta las filas según sea necesario */
+  grid-template-areas:
+    'header header'
+    'sidebar main';
+  height: 100vh;
+}
+
+/* Ajusta las áreas para que coincidan con las áreas definidas en la cuadrícula */
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.main-container {
+  grid-area: main;
+}
+
+
+/* Header  */
+.header {
+  grid-area: header;
+  height: 38px;
+  width: calc(100% - 65px); /* Restar el ancho total de los márgenes */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px; /* Padding para todos los lados */
+  margin-top: 20px;
+  background-color: #020409;
+  border-radius: 10px; /* Agregar borde redondeado */
+  border: 1px solid #C0C0C0; /* Agregar borde color #C0C0C0 */
+  z-index: 50;
+}
+
+.menu-icon {
+  display: none;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  margin-right: auto; /* Empuja el menú hacia la izquierda */
+}
+
+.dark-mode-button {
+  background-color: #396CF5; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border: none;
+  padding: 8px 16px; /* Ajustar el padding según sea necesario */
+  border-radius: 50px; /* Borde redondeado */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 600px; /* Espacio entre el menú y el botón */
+  
+}
+
+.dark-mode-button:hover {
+  background-color: #2a4c8c; /* Color de fondo al pasar el mouse */
+}
+
+
+/* End Header  */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #020409;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  border-radius: 10px; /* Agregar borde redondeado */
+  border: 1px solid #C0C0C0; /* Agregar borde color #C0C0C0 */
+  margin-left: 15px; /* Margen izquierdo de 10px */
+  margin-right: 15px; /* Margen derecho de 10px */
+  margin-top: 50px; /* Margen superior de 20px */
+  margin-bottom: 90px; /* Margen inferior de 20px */
+  overflow-y: hidden;
+  width: 230px; /* Ajustar el ancho del sidebar según sea necesario */
+}
+
+.icon {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 18px; /* Cambiar el tamaño de los iconos */
+}
+
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 0px 30px;
+  margin-bottom: 30px;
+  width: 300px
+}
+
+/* Personalización del scrollbar */
+#sidebar::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+}
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: #7f7f7f; /* Color del thumb */
+  border-radius: 4px; /* Redondear los bordes del thumb */
+}
+
+.sidebar-title > span {
+  display: none;
+  
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+  font-size: 16px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+/* End Sidebar  */
+
+
+/* Main  */  
+.grid-container {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Primera columna para el sidebar, segunda columna para el contenido principal */
+  grid-template-rows: 50px 1fr; /* Altura del encabezado y el contenido principal */
+  grid-template-areas:
+    'header header'
+    'sidebar main'; /* Áreas para el sidebar y el contenido principal */
+  height: 100vh;
+}
+
+
+
+/* Ajustar el área del main */
+.main-container {
+  grid-area: main;
+  overflow-y: auto; /* Utilizar el scroll por defecto del navegador */
+  padding: 20px; /* Ajustar el relleno según sea necesario */
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Estilos para el scrollbar */
+.main-container::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 5px; /* Altura del scrollbar */
+}
+
+.main-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb */
+  border-radius: 5px; /* Borde redondeado del thumb */
+}
+
+.main-container::-webkit-scrollbar-track {
+  background-color: #020409; /* Color del track */
+}
+
+
+/* Estilos para el scrollbar */
+.main-container::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 5px; /* Altura del scrollbar */
+}
+
+.main-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb */
+  border-radius: 5px; /* Borde redondeado del thumb */
+}
+
+.main-container::-webkit-scrollbar-track {
+  background-color: #020409; /* Color del track */
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+
+
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 10px;
+  height: 300px;
+}
+
+
+
+.bottom-text {
+  text-align: left; /* Centra el texto horizontalmente */
+  margin-top: -132px; /* Ajusta el margen superior según sea necesario */
+  font-size: 14px; /* Tamaño de fuente */
+  color: #999; /* Color del texto */
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #396CF5;
+  border-radius: 5px;
+}
+
+.additional-text {
+  font-size: 18px; /* Tamaño de fuente para el párrafo */
+  margin-top: 10px; /* Espacio superior */
+  /* Otros estilos según sea necesario */
+}
+
+.additional-text p {
+  margin: 10; /* Elimina el margen por defecto del párrafo */
+  color: #A8A6A6;
+}
+
+.Plan {
+  margin-top: 20px; /* Aquí puedes ajustar la cantidad de margen según tus necesidades */
+}
+
+.Free{
+  font-size: 15px;
+  color: #A9A9A9;
+}
+
+.Active{
+  font-size: 12px;
+  color: #A9A9A9;
+}
+.subscribe-button {
+  background-color: #396CF5; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border: none;
+  padding: 8px 16px; /* Ajustar el padding según sea necesario */
+  border-radius: 50px; /* Borde redondeado */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.subscribe-button:hover {
+  background-color: #294c91;
+}
+
+
+/* End Main  */
+
+
+/* Medium <= 992px */
+  
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+/* Small <= 768px */
+  
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+  .hedaer-left {
+    display: none;
+  }
+}
+
+.subscription-container{
+  grid-area: main;
+  overflow-y: auto; /* Utilizar el scroll por defecto del navegador */
+  padding: 20px; /* Ajustar el relleno según sea necesario */
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Estilos para el scrollbar */
+.subscription-container::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 5px; /* Altura del scrollbar */
+}
+
+.subscription-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb */
+  border-radius: 5px; /* Borde redondeado del thumb */
+}
+
+.subscription-container::-webkit-scrollbar-track {
+  background-color: #020409; /* Color del track */
+}
+
+
+/* Estilos para el scrollbar */
+.subscription-container::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 5px; /* Altura del scrollbar */
+}
+
+
+.subscription-title{
+  margin-top: 35px;
+}
+
+.Free_plan{
+  font-size: 16px;
+  margin-top: -11px;
+}
+
+.dashed-line {
+  border: none;
+  border-top: 1px dashed #999; /* Establece una línea punteada de 1px con color gris */
+  margin: 28px 0; /* Ajusta el margen superior e inferior según sea necesario */
+  margin-right: 15px;
+}
+
+
+.subscription-content {
+  display: flex; /* Usa flexbox para alinear los elementos */
+  justify-content: space-between; /* Distribuye los elementos uniformemente en el espacio disponible */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.subscribed-to, .free-plan {
+  flex-basis: 23%; /* Establece el ancho de cada elemento */
+  margin-top: -25px;
+  margin-bottom: -25px;
+  font-size: 14px;
+}
+
+.plans-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plan-card {
+  width: 35%;
+  padding: 15px; /* Reducir el padding para que el contenido esté más junto */
+  background-color: #020409;
+  border-radius: 10px;
+  border: 1px solid #B9B6B6; /* Agregar un contorno de 2px de grosor y color azul */
+  margin-right: 60px;
+  margin-top: 0;
+  padding-bottom: 90px;
+}
+
+.plan-card h3,
+.plan-card p,
+.plan-card ul,
+.plan-card button {
+  margin: 5px 0; /* Ajusta el margen vertical de todos los elementos dentro de .plan-card */
+}
+
+.plan-card h3 {
+  margin-top: 0;
+}
+
+
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.plan-card button {
+  width: 100%; /* Establece el ancho del botón al 100% del contenedor */
+  background-color: #396CF5;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  
+}
+
+.plan-card h3 {
+  font-size: 24px; /* Tamaño de fuente para el título */
+  font-weight: 500;
+}
+
+
+.for_fans {
+  font-weight: 300;
+  
+  
+  font-size: 13px;
+  
+  
+}
+
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.price-forever {
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  margin-right: 5px; /* Ajusta el margen entre los elementos */
+  font-size: 50px;
+  font-weight: 600;
+  
+}
+
+.forever {
+  color: gray; /* Cambia el color del texto */
+  font-size: 30px;
+}
+
+.profile-container {
+  grid-area: main;
+  overflow-y: auto; /* Utilizar el scroll por defecto del navegador */
+  padding: 20px; /* Ajustar el relleno según sea necesario */
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 15px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+.edit-profile .form-group {
+  display: flex; /* Hace que los elementos dentro del contenedor se muestren en línea */
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+}
+
+.edit-profile .form-group label {
+  flex: 0 0 120px;
+  margin-right: 10px; /* Espacio entre la etiqueta y el campo de entrada */
+  text-align: left; /* Alinea el texto de la etiqueta a la derecha */
+  font-weight: 500; /* Opcional: hace que la etiqueta sea negrita */
+  
+}
+
+.edit-profile .form-group input {
+  flex: 1; /* Hace que el campo de entrada ocupe todo el espacio restante */
+  background-color: #181818;
+  padding: 10px; /* Ajusta el relleno del campo de entrada */
+  border: 1px solid #181818; /* Añade un borde al campo de entrada */
+  border-radius: 5px; /* Añade esquinas redondeadas al campo de entrada */
+  width: 100%; /* Ajusta el ancho del campo de entrada al 100% del contenedor */
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.edit-profile .form-group.channel2 label {
+  margin-top: 10px; /* Espacio entre este campo y el anterior */
+}
+
+.aceptance{
+  font-size: 13px;
+  color: #A8A6A6;
+  line-height: 0.5;
+
+}
+
+.button-save {
+  background-color: #181818;
+  color: #396CF5;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.button-save:hover {
+  background-color: #181818; /* Cambia el color de fondo al pasar el cursor */
+}
+
+.notification-settings {
+  margin-top: 10px;
+  padding: 1px;
+}
+
+.notification-option {
+  margin-bottom: 10px;
+}
+
+.notification-option label {
+  margin-left: 5px;
+}
+
+
+/* Estilos para el scrollbar */
+.profile-container::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 5px; /* Altura del scrollbar */
+}
+
+.profile-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb */
+  border-radius: 5px; /* Borde redondeado del thumb */
+}
+
+.profile-container::-webkit-scrollbar-track {
+  background-color: #020409; /* Color del track */
+}
+
+
+/* Estilos para el scrollbar */
+.profile-container::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 0.5px; /* Altura del scrollbar */
+}
+
+.notification-option {
+  margin-bottom: 5px; /* Ajusta el margen inferior */
+}
+
+.notification-option .info  {
+  margin-top: -10px; /* Ajusta el margen superior del elemento .info */
+  font-size: 11px;
+  color: #A8A6A6;
+}
+
+.info2{
+  margin-top: -10px; /* Ajusta el margen superior del elemento .info */
+  font-size: 11px;
+  color: #A8A6A6;
+}
+
+.info3{
+  margin-top: -10px; /* Ajusta el margen superior del elemento .info */
+  font-size: 11px;
+  color: #A8A6A6;
+}
+
+.info4{
+  margin-top: -10px; /* Ajusta el margen superior del elemento .info */
+  font-size: 11px;
+  color: #A8A6A6;
+}
+
+.info5{
+  margin-top: -10px; /* Ajusta el margen superior del elemento .info */
+  font-size: 11px;
+  color: #A8A6A6;
+}
+
+.info6{
+  margin-top: -10px; /* Ajusta el margen superior del elemento .info */
+  font-size: 11px;
+  color: #A8A6A6;
+}
+
+.team-container {
+  grid-area: main;
+  overflow-y: auto; /* Utilizar el scroll por defecto del navegador */
+  padding: 20px; /* Ajustar el relleno según sea necesario */
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 15px;
+}
+.team-container button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #396CF5;
+  color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+}
+
+.team-info {
+  margin-top: 0px;
+  padding: 22px;
+  border: 1px solid #C0C0C0;
+  background-color: #020409;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%; /* Por ejemplo, establece el ancho deseado */
+  max-width: 800px; /* Opcional: establece un ancho máximo */
+  margin-left: 0; /* Centra horizontalmente */
+  margin-right: auto; /* Centra horizontalmente */
+}
+
+
+.team-info .info-item {
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  color: #fff; /* Ajuste para el color del texto */
+}
+
+.team-info .info-item:last-child {
+  margin-right: 0;
+}
+
+.team-info h4 {
+  flex-basis: 100%;
+  margin-bottom: 10px;
+}
+
+.team-info p {
+  margin-bottom: 5px;
+  flex-basis: 50%; /* Distribuir en dos columnas */
+}
+
+.team-info form {
+  width: 100%;
+  flex-basis: 100%; /* Ocupar todo el ancho */
+}
+
+.team-info label {
+  background-color: #020409;
+  display: block;
+  margin-bottom: 5px;
+  color: #fff; /* Ajuste para el color del texto */
+}
+
+.team-info input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.team-info button[type="submit"] {
+  padding: 8px 16px;
+  background-color: #396CF5;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.text_info{
+  font-size: 14px;
+  color: #A8A6A6;
+  margin-top: -15px;
+}
+
+.invite{
+  font-size: 10px;
+}
+
+
+.email-input {
+  width: 30%;
+  padding: 8px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  background-color: #020409;
+  color: #ffffff;
+}
+
+.voice-cloning-container{
+  grid-area: main;
+  overflow-y: auto; /* Utilizar el scroll por defecto del navegador */
+  padding: 20px; /* Ajustar el relleno según sea necesario */
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 15px;
+}
+
+.voice{
+  font-size: 13px;
+  color: #B9B6B6;
+  line-height: 0.5;
+  margin-bottom: 23px;
+}
+
+.clone-voice-button {
+  padding: 10px 20px;
+  background-color: #396CF5;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.clone-voice-button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el fondo semitransparente */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.719);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Estilos para el contenido del pop-up */
+.popup-content {
+  background-color: #181818;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  width: 450px;
+  max-height: 580px; /* Altura máxima del contenido */
+  overflow-y: auto; /* Agregar scroll vertical si es necesario */
+}
+
+/* Estilos para el scrollbar */
+.popup-content::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 5px; /* Altura del scrollbar */
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb */
+  border-radius: 5px; /* Borde redondeado del thumb */
+}
+
+.popup-content::-webkit-scrollbar-track {
+  background-color: #020409; /* Color del track */
+}
+
+
+/* Estilos para el scrollbar */
+.popup-content::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar */
+  height: 0.5px; /* Altura del scrollbar */
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del thumb */
+  border-radius: 5px; /* Borde redondeado del thumb */
+}
+
+.popup-content::-webkit-scrollbar-track {
+  background-color: #020409; /* Color del track */
+}
+
+
+
+
+/* Estilos para el botón de cerrar */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Estilos para el título */
+h2 {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Estilos para el contenedor del card */
+.card {
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Estilos para el área de carga de archivos */
+.card-upload {
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px dashed #B6B6B6;
+  border-radius: 0px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Estilos para el texto de la zona de carga */
+.card-upload span {
+  display: block;
+  margin-top: 10px;
+  color: #ccc;
+}
+
+/* Estilos generales para los botones */
+button {
+  background-color: #181818;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Estilos específicos para los botones */
+.add-voice-button {
+  background-color: #4CAF50;
+}
+
+.cancel-button {
+  background-color: #f44336;
+}
+
+.acceptance-checkbox {
+  margin-top: 20px;
+  color: #fff;
+}
+
+.acceptance-checkbox label {
+  display: block;
+  margin-left: 20px;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Estilos para el mensaje de advertencia */
+.warning-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.file-counter{
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+
+.no-files-message{
+  font-size: 13px;
+  color: #A8A6A6;
+  margin-top: 15px;
+}
+
+.condition{
+  font-size: 13px;
+}
+
+.acceptance-checkbox{
+  font-size: 12px;
+}
